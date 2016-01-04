@@ -1,6 +1,6 @@
 Package.describe({
   name: 'astrocoders:talker',
-  version: '1.0.0',
+  version: '1.0.1',
   summary: 'Reactively re-runs a client code whenever a server condition changes',
   git: 'https://github.com/Astrocoders/meteor-talker',
   documentation: 'README.md'
@@ -13,6 +13,7 @@ Package.onUse(function(api) {
     'mongo',
     'underscore',
     'check',
+    'blaze',
   ]);
 
   api.addFiles('talker.js');

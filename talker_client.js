@@ -26,3 +26,9 @@ Meteor.listens = function(name, fn){
     },
   };
 };
+
+Blaze.TemplateInstance.prototype.listens = function(name, fn){
+  let listenerHandler = Meteor.listens(name, fn);
+
+  this.view.onViewDestroyed(listenerHandler.stop);
+};

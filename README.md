@@ -29,9 +29,12 @@ Meteor.talks('somethingChanged', function(rerunCb){
 
 ```js
 // @locus client
-Meteor.listens('somethingChanged', function(data){
+let listenerHandler = Meteor.listens('somethingChanged', function(data){
   console.log('got rerun', data.msg);
 });
+
+// call whenever you're done with it:
+listenerHandler.stop();
 ```
 
 ```js
@@ -40,5 +43,17 @@ Meteor.talks('somethingChanged', function(rerunCb){
   // Talker will detects the returning of a cursor and will listen
   // to the cursor changes to warn client.
   return Items.find();
+});
+```
+
+You can also use within a template instance, and will get stopped when the template
+get destroyed:
+```js
+Template.Foo.onCreated(function(){
+  this.foo = new ReactiveVar(0);
+  
+  this.listens('something', (data) => {
+    this.foo.set(data.foo);
+  });
 });
 ```

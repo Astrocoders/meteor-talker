@@ -1,4 +1,4 @@
-astrocoders:talker@0.0.1
+astrocoders:talker@1.0.0
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4
 base64@1.0.4
@@ -22,7 +22,7 @@ html-tools@1.0.5
 htmljs@1.0.5
 id-map@1.0.4
 jquery@1.11.4
-local-test:astrocoders:talker@0.0.1
+local-test:astrocoders:talker@1.0.0
 logging@1.0.8
 meteor@1.1.10
 minimongo@1.0.10
