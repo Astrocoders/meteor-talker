@@ -9,20 +9,28 @@ Add it to your project with Meteor packages system
 $ meteor add astrocoders:talker
 ```
 
+## Why?
+Sometimes you want to reactively talks to the client but your needs don't require
+creating a new collection nor publications and subscribes.
+You may want to notify changes in a collection that your client is already subscribed
+to it and you don't want to mess things up (!).
+
 ## Usage
 
 ```js
 // @locus server
 Meteor.talks('somethingChanged', function(rerunCb){
   // Call `rerunCb` whenever you want to warn client
-  Meteor.setInterval(rerunCb, 1000);
+  // You can optionally pass an object to rerunCb
+  // but must be an object.
+  Meteor.setInterval(rerunCb.bind(null, {msg: 'foo'}), 1000);
 });
 ```
 
 ```js
 // @locus client
-Meteor.listens('somethingChanged', function(){
-  console.log('got rerun');
+Meteor.listens('somethingChanged', function(data){
+  console.log('got rerun', data.msg);
 });
 ```
 

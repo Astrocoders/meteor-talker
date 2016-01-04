@@ -3,12 +3,20 @@
 let AstroTalkerCol = new Mongo.Collection(TALKER_COLL);
 
 Meteor.listens = function(name, fn){
+  check({
+    name,
+    fn,
+  }, {
+    name: String,
+    fn: Function,
+  });
+
   let subHandler = Meteor.subscribe(`astrocoders_talker/${name}`);
 
   let computation = Tracker.autorun(function(){
-    AstroTalkerCol.findOne({name});
+    let doc = AstroTalkerCol.findOne({name});
 
-    fn();
+    fn( _.omit(doc, '_id', 'changingProp', 'name') );
   });
 
   return {
