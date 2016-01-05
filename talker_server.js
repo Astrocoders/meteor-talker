@@ -3,7 +3,7 @@ Meteor.talks = function(name, fn){
   Meteor.publish(`astrocoders_talker/${name}`, function(){
     const talkerId = Random.id();
     const pub = this;
-    let boundTalkChange = talkChange.bind(null);
+    let boundTalkChange = talkChange.bind(null, {});
     let talker = fn( talkChange ) || {};
 
     this.added(TALKER_COLL, talkerId, {
