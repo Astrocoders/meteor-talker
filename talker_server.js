@@ -1,6 +1,8 @@
 /* jshint esnext: true*/
 Meteor.talks = function(name, fn){
   Meteor.publish(`astrocoders_talker/${name}`, function(){
+    this.unblock();
+
     const talkerId = Random.id();
     const pub = this;
     let talker = fn( talkChange ) || {};
