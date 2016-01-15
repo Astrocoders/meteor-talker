@@ -1,5 +1,6 @@
 AstroTalker
 ===========
+[![Stories in Ready](https://badge.waffle.io/Astrocoders/meteor-talker.svg?label=ready&title=Ready)](http://waffle.io/Astrocoders/meteor-talker)
 
 Reactively re-runs a client code whenever a server condition changes
 
